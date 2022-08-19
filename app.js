@@ -9,6 +9,7 @@ const mongooseSanitize = require('express-mongo-sanitize')
 const xss = require('xss-clean')
 const hpp = require('hpp')
 const compression = require('compression')
+const cors = require('cors')
 
 const tourRouter = require('./routes/tourRoutes')
 const userRouter = require('./routes/userRoutes')
@@ -25,6 +26,13 @@ app.enable('trust proxy')
 // set view engine
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
+
+app.use(cors())
+
+// Alloweing only certain url to get access to out application
+// app.use({
+//     origin: 'https://www.natours.com'
+// })
 
 // serving static files
 app.use(express.static(path.join(__dirname, 'public')))
