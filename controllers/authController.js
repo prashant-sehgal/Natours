@@ -49,7 +49,6 @@ exports.signup = CatchAsync(async (req, res, next) => {
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm,
     })
-    console.log(newUser)
 
     const url = `${req.protocol}://${req.get('host')}/me`
     await new Email(newUser, url).sendWelcome()
@@ -85,8 +84,6 @@ exports.logout = (req, res) => {
 exports.protect = CatchAsync(async (req, res, next) => {
     // 1) Get token and check if it's there
     let token
-
-    console.log(req.cookies.jwt)
 
     if (
         req.headers.authorization &&

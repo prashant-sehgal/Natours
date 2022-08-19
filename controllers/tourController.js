@@ -27,8 +27,6 @@ exports.uploadTourImages = upload.fields([
 ])
 
 exports.resizeTourImages = async (req, res, next) => {
-    console.log(req.files)
-
     if (!req.files.imageCover || !req.files.images) next()
 
     // Process cover image
@@ -52,8 +50,6 @@ exports.resizeTourImages = async (req, res, next) => {
             req.body.images.push(filename)
         })
     )
-
-    console.log(req.body)
     next()
 }
 

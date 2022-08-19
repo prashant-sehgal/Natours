@@ -30,7 +30,7 @@ if (userDataForm) {
         form.append('name', document.getElementById('name').value)
         form.append('email', document.getElementById('email').value)
         form.append('photo', document.getElementById('photo').files[0])
-        console.log(form)
+
         await updateSettings(form, 'data')
     })
 }
@@ -60,9 +60,8 @@ if (userPasswordForm) {
 
 if (bookBtn) {
     bookBtn.addEventListener('click', (event) => {
-        console.log('hello')
         event.target.textContent = 'Processing...'
-        console.log(event.target.dataset)
+
         const { tourId, userId, tourPrice } = event.target.dataset
         bookTour(tourId, userId, tourPrice)
     })

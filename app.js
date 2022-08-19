@@ -8,6 +8,7 @@ const helmet = require('helmet')
 const mongooseSanitize = require('express-mongo-sanitize')
 const xss = require('xss-clean')
 const hpp = require('hpp')
+const compression = require('compression')
 
 const tourRouter = require('./routes/tourRoutes')
 const userRouter = require('./routes/userRoutes')
@@ -70,6 +71,8 @@ app.use(
         ],
     })
 )
+
+app.use(compression())
 
 // Text middleware
 app.use((req, res, next) => {

@@ -10,7 +10,7 @@ export const bookTour = async (tourId, userId, tourPrice) => {
     try {
         // 1 get session from api
         const session = await axios(
-            `http://127.0.0.1:8000/api/v1/bookings/checkout-session/${tourId}`
+            `/api/v1/bookings/checkout-session/${tourId}`
         )
         // console.log(session)
         // 2 Create checout form + charge credit card
@@ -19,7 +19,6 @@ export const bookTour = async (tourId, userId, tourPrice) => {
         // })
         location.assign(`/?tour=${tourId}&user=${userId}&price=${tourPrice}`)
     } catch (err) {
-        console.log(err)
         showAlert('error', err)
     }
 }
